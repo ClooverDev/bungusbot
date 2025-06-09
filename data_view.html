@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+<html>
+
+    <head>
+
+        <link rel="icon" href="https://clooverlandstudios.com/default.ico">
+
+        <title> API - PUBLIC BUNGUS DATA </title>
+
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+        <style>
+            p {
+                color: white;
+                font-family: 'Courier New', sans-serif;
+            }
+        </style>
+
+    </head>
+
+    <body bgColor="black">
+        <p class="data__ping_count">Pinged globally over <span style="font-family: 'Arial Bold', sans-serif;">0</span> times.</p>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            // UPDATE ON INITIALIZING
+
+            API_PATH="http://api.clooverlandstudios.com/"
+
+            function update_texts() {
+                GetPingCount = 0
+
+                $.getJSON('https://your-vercel-project-name.vercel.app/api/bot-data')
+                .done(function(data) {
+                console.log('Bot Data:', data);
+                })
+                .fail(function(err) {
+                console.error('Failed to load data:', err);
+                });
+
+                PingBase = "Pinged globally over <span style='font-family: 'Arial Bold', sans-serif;'>"+GetPingCount+"</span> times."
+
+                $(".data__ping_count").html(PingBase)
+            }
+            
+            update_texts();
+        })
+
+    </script>
+
+</html>
