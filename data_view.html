@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html>
 
     <head>
@@ -8,8 +6,6 @@
         <link rel="icon" href="https://clooverlandstudios.com/default.ico">
 
         <title> API - PUBLIC BUNGUS DATA </title>
-
-        <meta http-equiv="Access-Control-Allow-Origin" content="*">
 
         <style>
             p {
@@ -29,27 +25,17 @@
     <script>
 
         $(document).ready(function(){
-            // UPDATE ON INITIALIZING
+            
+            let GetPingCount = 0
 
-            API_PATH="http://api.clooverlandstudios.com/"
+            $.getJSON("bot_data.json", function(data) {
+                GetPingCount = data["ping-count"];
+                update_texts()
+            })
 
             function update_texts() {
-                GetPingCount = 0
-
-                $.getJSON('https://your-vercel-project-name.vercel.app/api/bot-data')
-                .done(function(data) {
-                console.log('Bot Data:', data);
-                })
-                .fail(function(err) {
-                console.error('Failed to load data:', err);
-                });
-
-                PingBase = "Pinged globally over <span style='font-family: 'Arial Bold', sans-serif;'>"+GetPingCount+"</span> times."
-
-                $(".data__ping_count").html(PingBase)
+                $(".data__ping_count").html("Pinged globally over <span style='font-family: 'Arial Bold', sans-serif;'>"+GetPingCount+"</span> times.")
             }
-            
-            update_texts();
         })
 
     </script>
