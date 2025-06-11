@@ -18,6 +18,7 @@
 
     <body bgColor="black">
         <p class="data__ping_count">Pinged globally over <span style="font-family: 'Arial Bold', sans-serif;">0</span> times.</p>
+        <p class="data__pinged_last">Last pinged at <span style="font-family: 'Arial Bold', sans-serif;">00:00:00 AM</span>.</p>
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -27,15 +28,18 @@
         $(document).ready(function(){
             
             let GetPingCount = 0
+            let LastPinged = ""
 
             $.getJSON("https://api.clooverlandstudios.com/data/bot_data.json", function(data) {
                 GetPingCount = data["ping-count"];
+                LastPinged = data['last-pinged'];
                 update_texts()
             })
 
             function update_texts() {
                 console.log("ping")
-                $(".data__ping_count").html("Pinged globally over <span style='font-family: 'Arial Bold', sans-serif;'>"+GetPingCount+"</span> times.")
+                $(".data__ping_count").html("Pinged globally over <span style='font-family: 'Arial Bold', sans-serif;'>"+GetPingCount+"</span> times.");
+                $(".data__pinged_last").html("Last pinged at <span style='font-family: 'Arial Bold', sans-serif;'>"+LastPinged+"</span>.");
             }
         })
 
