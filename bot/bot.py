@@ -17,7 +17,16 @@ from dotenv import load_dotenv
 
 import asyncio
 
-# LOAD ##
+## YEAH ##
+DISCORD_TKN="MTEyODM3MTQ0OTM4NDY3NzUwNw.GykMC_.ZbrLGmr9KMOIAF0tFy2Iga3OT-NQZWSsMlT-Mg"
+
+GITHUB_TOKEN=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
+GITHUB_REPO=clooverdev/api-clooverlandstudios
+GITHUB_FILE_PATH=data/bot_data.json
+
+PYTHONIOENCODING=utf-8
+
+## LOAD ##
 load_dotenv()
 
 GUILD=discord.Object(id=965060530446430268)
